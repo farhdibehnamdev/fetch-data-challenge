@@ -7,6 +7,7 @@ export const apiRequest = async function (
     const response = await fetch(url, optionsObj);
     if (!response.ok) throw Error("Something went wrong...");
     const data = await response.json();
+    console.log("ddd ::", data);
     return data;
   } catch (err) {
     return err.message;

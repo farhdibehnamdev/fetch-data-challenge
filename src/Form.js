@@ -1,12 +1,11 @@
 import { Button } from "./Button";
-export const Form = (setReqType) => {
+export const Form = ({ reqType, setReqType }) => {
+  console.log("reqqq sdfsdf ::", reqType);
   return (
-    <div>
-      <form className="form" onSubmit={(e) => e.preventDefault()}>
-        <Button buttonText="users" onClick={() => setReqType("users")} />
-        <Button buttonText="posts" onClick={() => setReqType("posts")} />
-        <Button buttonText="comments" onClick={() => setReqType("comments")} />
-      </form>
-    </div>
+    <form onSubmit={(e) => e.preventDefault()}>
+      <Button buttonText="users" reqType={reqType} setReqType={setReqType} />
+      <Button buttonText="posts" reqType={reqType} setReqType={setReqType} />
+      <Button buttonText="comments" reqType={reqType} setReqType={setReqType} />
+    </form>
   );
 };

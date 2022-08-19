@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Form } from "./Form";
-import "./App.css";
 import { apiRequest } from "./apiRequest";
+import { List } from "./List";
+import "./App.css";
 
 function App() {
   const API_URL = "https://jsonplaceholder.typicode.com/";
@@ -16,13 +17,20 @@ function App() {
   const [reqType, setReqType] = useState("users");
   const [items, setItems] = useState([]);
   useEffect(() => {
-    const response = apiRequest(`${API_URL}${reqType}`, optionsObj);
-    response.then((data) => setItems(data));
+    const fetchItem = async () => {
+      const response = apiRequest(`${API_URL}${reqType}`);
+      response.then((data) => {
+        console.log(data);
+        setItems(data);
+      });
+    };
+    fetchItem();
   }, [reqType]);
 
   return (
     <div className="App">
-      <Form setReqType={setReqType} reqType={reqType} />
+      <Form reqType={reqType} setReqType={setReqType} />
+      <List items={items} />
     </div>
   );
 }

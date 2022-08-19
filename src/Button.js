@@ -1,9 +1,11 @@
-export const Button = function (buttonText, reqType) {
+export const Button = function ({ buttonText, reqType, setReqType }) {
   return (
-    <div>
-      <button className={buttonText === reqType ? "selected" : ""}>
-        {buttonText}
-      </button>
-    </div>
+    <button
+      onClick={(e) => setReqType(buttonText)}
+      type="button"
+      className={buttonText === reqType ? "selected" : null}
+    >
+      {buttonText}
+    </button>
   );
 };
